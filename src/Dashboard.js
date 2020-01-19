@@ -11,23 +11,18 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import {Menu} from '@material-ui/icons';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {mainListItems, secondaryListItems} from './listItems'
 import Button from "@material-ui/core/Button";
 import 'firebase/firestore';
-import AddASurveyCollection from "./AddASurveyCollection";
 import {AuthContext} from "./Auth";
 import app from "./base";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import SurveyList from './SurveyList'
 import axios from "axios";
-import BackgroundSlideshow from 'react-background-slideshow'
-import ImageGallery from 'react-image-gallery';
+
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -143,20 +138,9 @@ export default function Dashboard() {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedMinHeight);
     const screenWidth = window.screen.width;
     const {currentUser} = useContext(AuthContext);
-    let transformedUserEmail = undefined;
     var db = firebase.firestore();
     var user = firebase.auth().currentUser;
-    // useEffect(() => {
-    //     transformUserEmail()
-    // }, []);
-    // useEffect(() => {
-    //     fetchUserData()
-    // }, []);
-    console.log(user)
-    const transformUserEmail = () => {
-        // transformedUserEmail = currentUser.email.replace(".", "__DOT__").replace("@", "__AT__");
-        transformedUserEmail = "testUser"
-    };
+    console.log(user);
 
     const handleOpen = () => {
         setOpenModal(true);
@@ -191,11 +175,6 @@ export default function Dashboard() {
             console.log(response.data.collections, "response");
             if (response.status === 200) {
                 setFetchedSurveys(response.data.collections);
-                // console.log(fetchedSurveys, fetchedSurveys);
-                // fetchedSurveys.forEach(function (item, index) {
-                //         console.log(item)
-                //
-                //     }
             }
         })
             .catch(function (error) {
@@ -204,9 +183,7 @@ export default function Dashboard() {
                 }
             });
     };
-    var image1 = "https://s3-media0.fl.yelpcdn.com/bphoto/9OOBQgSAz-IsV0We_faXmQ/o.jpg"
-    var image2 = "https://s3-media0.fl.yelpcdn.com/bphoto/9OOBQgSAz-IsV0We_faXmQ/o.jpg"
-    var image3 = "https://s3-media0.fl.yelpcdn.com/bphoto/9OOBQgSAz-IsV0We_faXmQ/o.jpg"
+
     return (
         <div className={classes.root}>
             <CssBaseline/>
@@ -277,12 +254,7 @@ export default function Dashboard() {
                     </Box>
                 </Container>
             </main>
-            <AddASurveyCollection
-                openModal={openModal}
-                handleClose={handleClose}
-                handleOpen={handleOpen}
-                currentUser={currentUser}
-            />
+
         </div>
     );
 }

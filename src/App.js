@@ -2,7 +2,6 @@ import React from 'react';
 import Dashboard from './Dashboard'
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import Login from "./Login";
-import SignUp from "./SignUp";
 import SignUp2 from "./SignUp2";
 import {AuthProvider} from "./Auth";
 import PrivateRoute from "./PrivateRoute";
