@@ -251,7 +251,6 @@ export default function Dashboard() {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer}/>
                 <Container maxWidth="lg" className={classes.container}>
-                    <ImageGallery items={[ image1, image2, image3]} />;
                     {/*<BackgroundSlideshow images={[ image1, image2, image3]} />*/}
                     {/*<Grid container spacing={3}>*/}
                     {/*    <Grid item xs={12} md={8} lg={9}>*/}
